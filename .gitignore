@@ -1,0 +1,24 @@
+# Xcode
+DerivedData/
+*.xcuserstate
+*.xcuserdata/
+xcuserdata/
+*.moved-aside
+
+# Swift Package Manager
+.build/
+
+# macOS
+.DS_Store
+
+# Local agent/editor folders
+.claude/
+
+# Local secrets
+Mova/Resources/MovaSecrets.plist
+
+# Generated ML datasets
+MLTrainingData/
+
+# Local Create ML training projects
+*.mlproj/

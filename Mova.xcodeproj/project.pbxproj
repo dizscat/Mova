@@ -1,0 +1,671 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0725760798ADAA6069664022 /* MusicKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE42D49C2B6BD5E95AB4A7F /* MusicKitService.swift */; };
+		0B308AD4571A468F4BC8BFF1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0829EDD1D9690C0BBA231688 /* RootView.swift */; };
+		17DE612D2FE3FE6400215BD2 /* MovaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE612C2FE3FE6400215BD2 /* MovaApp.swift */; };
+		17DE612F2FE3FE6400215BD2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE612E2FE3FE6400215BD2 /* ContentView.swift */; };
+		17DE61312FE3FE6700215BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DE61302FE3FE6700215BD2 /* Assets.xcassets */; };
+		17DE61342FE3FE6700215BD2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DE61332FE3FE6700215BD2 /* Preview Assets.xcassets */; };
+		24792A752FE00DB248CAEEC5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B0D83E7E291579966C63E /* LoginView.swift */; };
+		262BFC82659F07B1BD7DF72C /* EmotionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C593B626BD001E2C2C7B2B1 /* EmotionType.swift */; };
+		29EFEAF81725A975A6ECCCC7 /* EmotionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F79A1B083677905A68B181B /* EmotionOverlayView.swift */; };
+		30269727EDF7E6026649D851 /* EmotionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34829F2F08EA4A18CCF57066 /* EmotionLog.swift */; };
+		3800B044310C249337AEEAB8 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7E5E8B83A9A9719E62CF7 /* JournalView.swift */; };
+		3B32E6166200F8294F891578 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEF20644781CA9815F45F1 /* DetectionView.swift */; };
+		420A25EEAEBBC84DBF2D6F7C /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41913E64AD64844611AD8614 /* MusicViewModel.swift */; };
+		AA11AA11AA11AA11AA11AA11 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22AA22AA22AA22AA22AA22 /* Track.swift */; };
+		BB11BB11BB11BB11BB11BB11 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22BB22BB22BB22BB22BB22 /* Streak.swift */; };
+		CC11CC11CC11CC11CC11CC11 /* DailyJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */; };
+		DD11DD11DD11DD11DD11DD11 /* AIJournalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */; };
+		EE11EE11EE11EE11EE11EE11 /* DailyJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */; };
+		FF11FF11FF11FF11FF11FF11 /* DailyJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */; };
+		AB11AB11AB11AB11AB11AB11 /* MovaAesthetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */; };
+		AC11AC11AC11AC11AC11AC11 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */; };
+		490CC2D1C4F8819F930F0930 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56ADC8D8BD1CDE5F06F7829 /* JournalViewModel.swift */; };
+		4D93FB7CF26CB9A8A02562D6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE1157C9FCD58A5682CB890 /* AuthViewModel.swift */; };
+		5344D466DF9EBD04EFFDDC05 /* EmotionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01E0941D3B3D8D1F17AF269 /* EmotionChartView.swift */; };
+		5A8F87F26CC68056B14CF275 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC76CA97DED301147BE15 /* ProfileView.swift */; };
+		5D5D671C81960F097632AA32 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF11B62E840772B2A040520 /* ProfileViewModel.swift */; };
+		5E906264808F7772CA167397 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA576D5E0309654A9A99A82 /* CameraPreviewView.swift */; };
+		773AF8A57787AF459F335795 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C186471C3D66B96FDE784862 /* AppState.swift */; };
+		7A8227D6AEA200391CB0E7FD /* EmotionClassifierModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */; };
+		98522CD4E49400EFC937D44F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80637C62643B74860B3AC899 /* UserProfile.swift */; };
+		9AD4E6CFA920837DD4EAADCA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC9F32361E24C91FA83A374 /* PersistenceManager.swift */; };
+		AC3BA0FC076F92DF3320D93F /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3D85C9D2EAC590737FE15 /* DetectionViewModel.swift */; };
+		B1DC76839B37B4C74306F206 /* FaceLandmarkDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2782A23BC9966A6095BA8480 /* FaceLandmarkDetector.swift */; };
+		B29B498A5883755895DC797F /* MusicRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F122C7C8CFC7956998469 /* MusicRecommendationView.swift */; };
+		B91A40D012133C82A1C09FD8 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E386F894BC003ADF3E4B2C /* CameraManager.swift */; };
+		C10976841812F8BCD8B3CD0F /* EmotionClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B33C15B519130A6F476C3 /* EmotionClassifier.swift */; };
+		CB846D2AF733ABC7A3AAB363 /* MusicMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B41CE29F96B8F1EAE62494 /* MusicMapper.swift */; };
+		CC3D782521B7ED7C1B70B92E /* PersistenceServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79383AEAEAED3150652429 /* PersistenceServiceProtocol.swift */; };
+		D826F803C9760B412BB1F92B /* TrackRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F84F936AFE1539246D1091 /* TrackRowView.swift */; };
+		E2E9FCE60A59B67D60B93060 /* MusicMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F8B159E16BC18AEF083EA /* MusicMood.swift */; };
+		EE088A2C6726E8D3ADC62BAF /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DE32ABD22B8365B3039AD /* LocalStorageService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		011AC76CA97DED301147BE15 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		051B33C15B519130A6F476C3 /* EmotionClassifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmotionClassifier.swift; sourceTree = "<group>"; };
+		0829EDD1D9690C0BBA231688 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		158B0D83E7E291579966C63E /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		17DE61292FE3FE6400215BD2 /* Mova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mova.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17DE612C2FE3FE6400215BD2 /* MovaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovaApp.swift; sourceTree = "<group>"; };
+		17DE612E2FE3FE6400215BD2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		17DE61302FE3FE6700215BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17DE61332FE3FE6700215BD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		19B41CE29F96B8F1EAE62494 /* MusicMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicMapper.swift; sourceTree = "<group>"; };
+		1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; path = EmotionClassifierModel.mlmodel; sourceTree = "<group>"; };
+		1F79383AEAEAED3150652429 /* PersistenceServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersistenceServiceProtocol.swift; sourceTree = "<group>"; };
+		212F122C7C8CFC7956998469 /* MusicRecommendationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicRecommendationView.swift; sourceTree = "<group>"; };
+		2782A23BC9966A6095BA8480 /* FaceLandmarkDetector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaceLandmarkDetector.swift; sourceTree = "<group>"; };
+		2AF11B62E840772B2A040520 /* ProfileViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		34829F2F08EA4A18CCF57066 /* EmotionLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmotionLog.swift; sourceTree = "<group>"; };
+		3EC3D85C9D2EAC590737FE15 /* DetectionViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetectionViewModel.swift; sourceTree = "<group>"; };
+		41913E64AD64844611AD8614 /* MusicViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
+		42F84F936AFE1539246D1091 /* TrackRowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TrackRowView.swift; sourceTree = "<group>"; };
+		4C593B626BD001E2C2C7B2B1 /* EmotionType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmotionType.swift; sourceTree = "<group>"; };
+		5AC9F32361E24C91FA83A374 /* PersistenceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		5DA576D5E0309654A9A99A82 /* CameraPreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		6CE42D49C2B6BD5E95AB4A7F /* MusicKitService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicKitService.swift; sourceTree = "<group>"; };
+		6F79A1B083677905A68B181B /* EmotionOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmotionOverlayView.swift; sourceTree = "<group>"; };
+		80637C62643B74860B3AC899 /* UserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		9EE7E5E8B83A9A9719E62CF7 /* JournalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		9F9F8B159E16BC18AEF083EA /* MusicMood.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicMood.swift; sourceTree = "<group>"; };
+		A01E0941D3B3D8D1F17AF269 /* EmotionChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmotionChartView.swift; sourceTree = "<group>"; };
+		AA22AA22AA22AA22AA22AA22 /* Track.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		AEE1157C9FCD58A5682CB890 /* AuthViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		BB22BB22BB22BB22BB22BB22 /* Streak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
+		CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournal.swift; sourceTree = "<group>"; };
+		DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AIJournalService.swift; sourceTree = "<group>"; };
+		EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournalViewModel.swift; sourceTree = "<group>"; };
+		FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournalView.swift; sourceTree = "<group>"; };
+		AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovaAesthetic.swift; sourceTree = "<group>"; };
+		AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		AD22AD22AD22AD22AD22AD22 /* MovaSecrets.example.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = MovaSecrets.example.plist; sourceTree = "<group>"; };
+		B56ADC8D8BD1CDE5F06F7829 /* JournalViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
+		BDEEF20644781CA9815F45F1 /* DetectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
+		C186471C3D66B96FDE784862 /* AppState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		E5E386F894BC003ADF3E4B2C /* CameraManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		F63DE32ABD22B8365B3039AD /* LocalStorageService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17DE61262FE3FE6400215BD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01773C1FB51E39156CD22DEF /* Detection */ = {
+			isa = PBXGroup;
+			children = (
+				BDEEF20644781CA9815F45F1 /* DetectionView.swift */,
+				6F79A1B083677905A68B181B /* EmotionOverlayView.swift */,
+			);
+			name = Detection;
+			path = Detection;
+			sourceTree = "<group>";
+		};
+		0C56096C147D844E9A539DEC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				158B0D83E7E291579966C63E /* LoginView.swift */,
+			);
+			name = Auth;
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		17DE61202FE3FE6400215BD2 = {
+			isa = PBXGroup;
+			children = (
+				17DE612B2FE3FE6400215BD2 /* Mova */,
+				17DE612A2FE3FE6400215BD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		17DE612A2FE3FE6400215BD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17DE61292FE3FE6400215BD2 /* Mova.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17DE612B2FE3FE6400215BD2 /* Mova */ = {
+			isa = PBXGroup;
+			children = (
+				17DE612C2FE3FE6400215BD2 /* MovaApp.swift */,
+				17DE612E2FE3FE6400215BD2 /* ContentView.swift */,
+				17DE61302FE3FE6700215BD2 /* Assets.xcassets */,
+				17DE61322FE3FE6700215BD2 /* Preview Content */,
+				E4125C89FFE811530E3434BF /* App */,
+				F3A5D939A1A6A8DEDFC77ED8 /* Models */,
+				B2550BF93743FF3E6F123133 /* Services */,
+				1963772CC6FC208B92C60CCC /* ViewModels */,
+				A71AC6F728623319483B53A4 /* Views */,
+				AD33AD33AD33AD33AD33AD33 /* Resources */,
+				C384076756E265D6554F6EDC /* ML */,
+			);
+			path = Mova;
+			sourceTree = "<group>";
+		};
+		17DE61322FE3FE6700215BD2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				17DE61332FE3FE6700215BD2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1963772CC6FC208B92C60CCC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AEE1157C9FCD58A5682CB890 /* AuthViewModel.swift */,
+				EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */,
+				3EC3D85C9D2EAC590737FE15 /* DetectionViewModel.swift */,
+				B56ADC8D8BD1CDE5F06F7829 /* JournalViewModel.swift */,
+				41913E64AD64844611AD8614 /* MusicViewModel.swift */,
+				2AF11B62E840772B2A040520 /* ProfileViewModel.swift */,
+			);
+			name = ViewModels;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		41B849260B98A2010BBF921A /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */,
+				A01E0941D3B3D8D1F17AF269 /* EmotionChartView.swift */,
+				9EE7E5E8B83A9A9719E62CF7 /* JournalView.swift */,
+			);
+			name = Journal;
+			path = Journal;
+			sourceTree = "<group>";
+		};
+		5EEE5852D2C65DA94AA17766 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				6CE42D49C2B6BD5E95AB4A7F /* MusicKitService.swift */,
+				19B41CE29F96B8F1EAE62494 /* MusicMapper.swift */,
+			);
+			name = Music;
+			path = Music;
+			sourceTree = "<group>";
+		};
+		9179CA3A2DF99A994FCF5CEF /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F63DE32ABD22B8365B3039AD /* LocalStorageService.swift */,
+				5AC9F32361E24C91FA83A374 /* PersistenceManager.swift */,
+				1F79383AEAEAED3150652429 /* PersistenceServiceProtocol.swift */,
+			);
+			name = Persistence;
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		95F7F27332DAD169237BD16B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				011AC76CA97DED301147BE15 /* ProfileView.swift */,
+			);
+			name = Profile;
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A63CFA39A921BAACF150AD49 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				212F122C7C8CFC7956998469 /* MusicRecommendationView.swift */,
+				42F84F936AFE1539246D1091 /* TrackRowView.swift */,
+			);
+			name = Music;
+			path = Music;
+			sourceTree = "<group>";
+		};
+		A71AC6F728623319483B53A4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C56096C147D844E9A539DEC /* Auth */,
+				AB33AB33AB33AB33AB33AB33 /* Components */,
+				01773C1FB51E39156CD22DEF /* Detection */,
+				AC33AC33AC33AC33AC33AC33 /* Home */,
+				41B849260B98A2010BBF921A /* Journal */,
+				A63CFA39A921BAACF150AD49 /* Music */,
+				95F7F27332DAD169237BD16B /* Profile */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB33AB33AB33AB33AB33AB33 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */,
+			);
+			name = Components;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AC33AC33AC33AC33AC33AC33 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */,
+			);
+			name = Home;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AD33AD33AD33AD33AD33AD33 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AD22AD22AD22AD22AD22AD22 /* MovaSecrets.example.plist */,
+			);
+			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AE132D4D1BAA5C02AC37CE84 /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				051B33C15B519130A6F476C3 /* EmotionClassifier.swift */,
+				2782A23BC9966A6095BA8480 /* FaceLandmarkDetector.swift */,
+			);
+			name = Vision;
+			path = Vision;
+			sourceTree = "<group>";
+		};
+		B2550BF93743FF3E6F123133 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DD33DD33DD33DD33DD33DD33 /* AI */,
+				E60CC58D5325497F0C7F32EF /* Camera */,
+				5EEE5852D2C65DA94AA17766 /* Music */,
+				9179CA3A2DF99A994FCF5CEF /* Persistence */,
+				AE132D4D1BAA5C02AC37CE84 /* Vision */,
+			);
+			name = Services;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C384076756E265D6554F6EDC /* ML */ = {
+			isa = PBXGroup;
+			children = (
+				1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */,
+			);
+			name = ML;
+			path = ML;
+			sourceTree = "<group>";
+		};
+		DD33DD33DD33DD33DD33DD33 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */,
+			);
+			name = AI;
+			path = AI;
+			sourceTree = "<group>";
+		};
+		E4125C89FFE811530E3434BF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C186471C3D66B96FDE784862 /* AppState.swift */,
+				0829EDD1D9690C0BBA231688 /* RootView.swift */,
+			);
+			name = App;
+			path = App;
+			sourceTree = "<group>";
+		};
+		E60CC58D5325497F0C7F32EF /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				E5E386F894BC003ADF3E4B2C /* CameraManager.swift */,
+				5DA576D5E0309654A9A99A82 /* CameraPreviewView.swift */,
+			);
+			name = Camera;
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		F3A5D939A1A6A8DEDFC77ED8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34829F2F08EA4A18CCF57066 /* EmotionLog.swift */,
+				4C593B626BD001E2C2C7B2B1 /* EmotionType.swift */,
+				CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */,
+				9F9F8B159E16BC18AEF083EA /* MusicMood.swift */,
+				AA22AA22AA22AA22AA22AA22 /* Track.swift */,
+				BB22BB22BB22BB22BB22BB22 /* Streak.swift */,
+				80637C62643B74860B3AC899 /* UserProfile.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17DE61282FE3FE6400215BD2 /* Mova */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17DE61372FE3FE6700215BD2 /* Build configuration list for PBXNativeTarget "Mova" */;
+			buildPhases = (
+				17DE61252FE3FE6400215BD2 /* Sources */,
+				17DE61262FE3FE6400215BD2 /* Frameworks */,
+				17DE61272FE3FE6400215BD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mova;
+			productName = Mova;
+			productReference = 17DE61292FE3FE6400215BD2 /* Mova.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17DE61212FE3FE6400215BD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					17DE61282FE3FE6400215BD2 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 17DE61242FE3FE6400215BD2 /* Build configuration list for PBXProject "Mova" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17DE61202FE3FE6400215BD2;
+			productRefGroup = 17DE612A2FE3FE6400215BD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17DE61282FE3FE6400215BD2 /* Mova */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17DE61272FE3FE6400215BD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17DE61342FE3FE6700215BD2 /* Preview Assets.xcassets in Resources */,
+				17DE61312FE3FE6700215BD2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17DE61252FE3FE6400215BD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17DE612F2FE3FE6400215BD2 /* ContentView.swift in Sources */,
+				17DE612D2FE3FE6400215BD2 /* MovaApp.swift in Sources */,
+				773AF8A57787AF459F335795 /* AppState.swift in Sources */,
+				0B308AD4571A468F4BC8BFF1 /* RootView.swift in Sources */,
+				30269727EDF7E6026649D851 /* EmotionLog.swift in Sources */,
+				262BFC82659F07B1BD7DF72C /* EmotionType.swift in Sources */,
+				CC11CC11CC11CC11CC11CC11 /* DailyJournal.swift in Sources */,
+				E2E9FCE60A59B67D60B93060 /* MusicMood.swift in Sources */,
+				AA11AA11AA11AA11AA11AA11 /* Track.swift in Sources */,
+				BB11BB11BB11BB11BB11BB11 /* Streak.swift in Sources */,
+				98522CD4E49400EFC937D44F /* UserProfile.swift in Sources */,
+				B91A40D012133C82A1C09FD8 /* CameraManager.swift in Sources */,
+				5E906264808F7772CA167397 /* CameraPreviewView.swift in Sources */,
+				DD11DD11DD11DD11DD11DD11 /* AIJournalService.swift in Sources */,
+				0725760798ADAA6069664022 /* MusicKitService.swift in Sources */,
+				CB846D2AF733ABC7A3AAB363 /* MusicMapper.swift in Sources */,
+				EE088A2C6726E8D3ADC62BAF /* LocalStorageService.swift in Sources */,
+				9AD4E6CFA920837DD4EAADCA /* PersistenceManager.swift in Sources */,
+				CC3D782521B7ED7C1B70B92E /* PersistenceServiceProtocol.swift in Sources */,
+				C10976841812F8BCD8B3CD0F /* EmotionClassifier.swift in Sources */,
+				B1DC76839B37B4C74306F206 /* FaceLandmarkDetector.swift in Sources */,
+				4D93FB7CF26CB9A8A02562D6 /* AuthViewModel.swift in Sources */,
+				EE11EE11EE11EE11EE11EE11 /* DailyJournalViewModel.swift in Sources */,
+				AC3BA0FC076F92DF3320D93F /* DetectionViewModel.swift in Sources */,
+				490CC2D1C4F8819F930F0930 /* JournalViewModel.swift in Sources */,
+				420A25EEAEBBC84DBF2D6F7C /* MusicViewModel.swift in Sources */,
+				5D5D671C81960F097632AA32 /* ProfileViewModel.swift in Sources */,
+				24792A752FE00DB248CAEEC5 /* LoginView.swift in Sources */,
+				3B32E6166200F8294F891578 /* DetectionView.swift in Sources */,
+				29EFEAF81725A975A6ECCCC7 /* EmotionOverlayView.swift in Sources */,
+				FF11FF11FF11FF11FF11FF11 /* DailyJournalView.swift in Sources */,
+				5344D466DF9EBD04EFFDDC05 /* EmotionChartView.swift in Sources */,
+				3800B044310C249337AEEAB8 /* JournalView.swift in Sources */,
+				AB11AB11AB11AB11AB11AB11 /* MovaAesthetic.swift in Sources */,
+				AC11AC11AC11AC11AC11AC11 /* DashboardView.swift in Sources */,
+				B29B498A5883755895DC797F /* MusicRecommendationView.swift in Sources */,
+				D826F803C9760B412BB1F92B /* TrackRowView.swift in Sources */,
+				5A8F87F26CC68056B14CF275 /* ProfileView.swift in Sources */,
+				7A8227D6AEA200391CB0E7FD /* EmotionClassifierModel.mlmodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		17DE61352FE3FE6700215BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		17DE61362FE3FE6700215BD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17DE61382FE3FE6700215BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mova/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MovaDemoEmotionMode = YES;
+				INFOPLIST_KEY_MovaGroqAPIKey = "$(MOVA_GROQ_API_KEY)";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Mova uses the front camera to detect facial emotions on-device.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MOVA_GROQ_API_KEY = "";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.njxzc.Mova;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17DE61392FE3FE6700215BD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Mova/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_MovaDemoEmotionMode = NO;
+				INFOPLIST_KEY_MovaGroqAPIKey = "$(MOVA_GROQ_API_KEY)";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Mova uses the front camera to detect facial emotions on-device.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MOVA_GROQ_API_KEY = "";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.njxzc.Mova;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17DE61242FE3FE6400215BD2 /* Build configuration list for PBXProject "Mova" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17DE61352FE3FE6700215BD2 /* Debug */,
+				17DE61362FE3FE6700215BD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17DE61372FE3FE6700215BD2 /* Build configuration list for PBXNativeTarget "Mova" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17DE61382FE3FE6700215BD2 /* Debug */,
+				17DE61392FE3FE6700215BD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17DE61212FE3FE6400215BD2 /* Project object */;
+}
