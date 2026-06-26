@@ -16,6 +16,7 @@ xcuserdata/
 
 # Local secrets
 Mova/Resources/MovaSecrets.plist
+Mova/Resources/GoogleService-Info.plist
 
 # Generated ML datasets
 MLTrainingData/

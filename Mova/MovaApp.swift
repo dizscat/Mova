@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+#if canImport(FirebaseCore)
+import FirebaseCore
+#endif
 
 @main
 struct MovaApp: App {
     init() {
+        #if canImport(FirebaseCore)
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
+        }
+        #endif
+
         MovaChrome.configure()
     }
 
