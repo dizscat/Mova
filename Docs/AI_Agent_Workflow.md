@@ -89,6 +89,10 @@ The agents collaborated through a sequential workflow:
 3. The UX & Testing Agent reviewed the product flow, identified friction points, and refined the app for usability and demo readiness.
 4. Feedback from testing was routed back to the Architecture Agent when data flow needed changes, or to the AI/ML Feature Agent when AI behavior needed adjustment.
 
+## Music Playback Scope
+
+The current version of Mova uses external music links instead of native playback. After detecting an emotion, Mova recommends suitable tracks and opens Apple Music search or a web fallback. Full playback through MusicKit, Spotify API, or another music catalog API is planned as future work because it requires authentication, catalog access, and more testing time.
+
 ## Demo Vision And Real ML Separation
 
 For deadline-safe demonstrations, Mova can run in Demo Vision mode. In this mode, Vision still tracks the face and shows a moving face overlay, while the emotion label comes from a deterministic demo classifier. Emotion logs store a `detectionSource` value so demo data can be separated from future Core ML results.

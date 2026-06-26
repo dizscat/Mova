@@ -13,6 +13,7 @@ Checklist ini merangkum pekerjaan yang perlu diselesaikan agar Mova benar-benar 
 - ERD: belum sepenuhnya terwakili dalam model dan persistence
 - AI agent workflow: terdokumentasi di `Docs/AI_Agent_Workflow.md` dan `Docs/Agent_Tickets.md`
 - Demo Vision mode: overlay wajah dan data log sudah dipisahkan dari Core ML final
+- Music playback: MVP membuka link eksternal; API playback penuh masuk future work
 
 ## Product Upgrade - Daily AI Journal
 

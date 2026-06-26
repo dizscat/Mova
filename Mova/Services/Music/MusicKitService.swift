@@ -10,9 +10,9 @@ import UIKit
 
 final class MusicKitService: ObservableObject {
 
-    /// Buka lagu di Apple Music via URL pencarian. Fallback ke web search bila
-    /// Apple Music tidak terpasang.
-    func openInAppleMusic(trackTitle: String, artist: String) {
+    /// Buka pencarian lagu di Apple Music. Full in-app playback sengaja
+    /// ditunda karena membutuhkan MusicKit authorization dan catalog API.
+    func openExternalMusicLink(trackTitle: String, artist: String) {
         let term = "\(trackTitle) \(artist)"
         let encoded = term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 

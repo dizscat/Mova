@@ -43,10 +43,27 @@ struct MusicRecommendationView: View {
                         .listRowBackground(Color.clear)
                     }
 
+                    Section {
+                        MovaGlassCard {
+                            HStack(spacing: 12) {
+                                MovaIconBadge(systemName: "arrow.up.right.music.note")
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("External music links")
+                                        .font(.headline)
+                                        .foregroundColor(MovaTimeMood.current.foreground)
+                                    Text("Mova recommends tracks from your detected mood, then opens Apple Music search or the web. Full in-app playback is planned for a later version.")
+                                        .font(.caption)
+                                        .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                                }
+                            }
+                        }
+                        .listRowBackground(Color.clear)
+                    }
+
                     Section("Tracks") {
                         ForEach(Array(mood.trackList.enumerated()), id: \.element.id) { index, track in
                             TrackRowView(track: track) {
-                                viewModel.playTrack(track)
+                                viewModel.openTrack(track)
                             }
                             .listRowBackground(Color.clear)
                             .opacity(appeared ? 1 : 0)

@@ -2,7 +2,7 @@
 //  TrackRowView.swift
 //  Mova
 //
-//  Satu baris track dengan tombol play.
+//  Satu baris track dengan tombol untuk membuka link musik eksternal.
 //
 
 import SwiftUI
@@ -28,9 +28,11 @@ struct TrackRowView: View {
                 }
                 Spacer()
                 Button(action: onPlay) {
-                    Image(systemName: "play.circle.fill")
+                    Label("Open", systemImage: "arrow.up.right.circle.fill")
+                        .labelStyle(.iconOnly)
                         .font(.title2)
                         .foregroundColor(MovaTimeMood.current.foreground)
+                        .accessibilityLabel("Open in Apple Music")
                 }
                 .buttonStyle(.plain)
             }

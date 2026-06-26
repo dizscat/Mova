@@ -2,7 +2,7 @@
 //  MusicViewModel.swift
 //  Mova
 //
-//  Menyediakan rekomendasi musik untuk emosi & memutar track via MusicKitService.
+//  Menyediakan rekomendasi musik untuk emosi dan membuka link musik eksternal.
 //
 
 import Foundation
@@ -20,8 +20,8 @@ final class MusicViewModel: ObservableObject {
         currentRecommendation = MusicMapper.recommendation(for: emotion)
     }
 
-    /// Putar / buka track di Apple Music.
-    func playTrack(_ track: Track) {
-        musicKitService.openInAppleMusic(trackTitle: track.title, artist: track.artist)
+    /// Buka track melalui Apple Music search atau fallback web.
+    func openTrack(_ track: Track) {
+        musicKitService.openExternalMusicLink(trackTitle: track.title, artist: track.artist)
     }
 }
