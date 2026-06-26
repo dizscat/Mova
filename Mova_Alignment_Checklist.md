@@ -11,6 +11,7 @@ Checklist ini merangkum pekerjaan yang perlu diselesaikan agar Mova benar-benar 
 - Rekomendasi musik: berjalan untuk MVP, tetapi belum otomatis penuh
 - Daily AI Journal: MVP sudah ditambahkan dengan draft editable dan fallback lokal
 - ERD: belum sepenuhnya terwakili dalam model dan persistence
+- AI agent workflow: terdokumentasi di `Docs/AI_Agent_Workflow.md` dan `Docs/Agent_Tickets.md`
 
 ## Product Upgrade - Daily AI Journal
 
