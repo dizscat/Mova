@@ -14,8 +14,7 @@ struct EmotionOverlayView: View {
     let source: DetectionSource
 
     var body: some View {
-        MovaGlassCard {
-            VStack(spacing: 14) {
+        VStack(spacing: 14) {
                 if let emotion = emotion {
                     Text(emotion.emoji)
                         .font(.system(size: 68))
@@ -35,10 +34,10 @@ struct EmotionOverlayView: View {
                         Text(source.displayName)
                             .font(.caption2.weight(.bold))
                             .textCase(.uppercase)
-                            .foregroundColor(.white.opacity(0.9))
+                            .foregroundColor(.white)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 5)
-                            .background(.white.opacity(source.isDemoData ? 0.18 : 0.12), in: Capsule())
+                            .background(.white.opacity(source.isDemoData ? 0.24 : 0.16), in: Capsule())
                     }
                     .frame(maxWidth: 230)
                 } else {
@@ -49,8 +48,24 @@ struct EmotionOverlayView: View {
                         .font(.headline)
                         .foregroundColor(.white)
                 }
-            }
         }
+        .padding(20)
+        .background(
+            LinearGradient(
+                colors: [
+                    .black.opacity(0.84),
+                    .black.opacity(0.68)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ),
+            in: RoundedRectangle(cornerRadius: 28, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .stroke(.white.opacity(0.26), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.40), radius: 26, x: 0, y: 18)
         .frame(maxWidth: 280)
         .animation(.spring(response: 0.42, dampingFraction: 0.82), value: emotion)
     }

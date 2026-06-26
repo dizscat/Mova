@@ -27,7 +27,7 @@ struct DetectionView: View {
                     .ignoresSafeArea()
                     .overlay(
                         LinearGradient(
-                            colors: [.black.opacity(0.08), .black.opacity(0.42)],
+                            colors: [.black.opacity(0.26), .black.opacity(0.62)],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -86,17 +86,21 @@ struct DetectionView: View {
     }
 
     private var permissionDeniedView: some View {
-        MovaGlassCard {
-            VStack(spacing: 14) {
-                MovaIconBadge(systemName: "camera.fill")
-                Text("Camera access is required")
-                    .font(.headline)
-                    .foregroundColor(MovaTimeMood.current.foreground)
-                Text("Enable camera permission in Settings to detect facial emotions.")
-                    .font(.subheadline)
-                    .foregroundColor(MovaTimeMood.current.secondaryForeground)
-                    .multilineTextAlignment(.center)
-            }
+        VStack(spacing: 14) {
+            MovaIconBadge(systemName: "camera.fill")
+            Text("Camera access is required")
+                .font(.headline)
+                .foregroundColor(.white)
+            Text("Enable camera permission in Settings to detect facial emotions.")
+                .font(.subheadline)
+                .foregroundColor(.white.opacity(0.78))
+                .multilineTextAlignment(.center)
+        }
+        .padding(20)
+        .background(.black.opacity(0.72), in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(.white.opacity(0.22), lineWidth: 1)
         }
         .padding(.horizontal, 28)
     }
@@ -157,7 +161,7 @@ private struct FaceTrackingOverlayView: View {
                     .foregroundColor(.white)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(.black.opacity(0.34), in: Capsule())
+                    .background(.black.opacity(0.72), in: Capsule())
                     .position(x: rect.midX, y: max(64, rect.minY - 22))
                 }
                 .transition(.opacity.combined(with: .scale(scale: 0.98)))

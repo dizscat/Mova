@@ -28,11 +28,13 @@ final class EmotionClassifier {
     private var demoConfidence: Double = 0.88
     private var lastDemoUpdate = Date.distantPast
     private let demoSequence: [(EmotionType, Double)] = [
-        (.neutral, 0.88),
         (.happy, 0.92),
-        (.sad, 0.84),
-        (.surprised, 0.87),
-        (.neutral, 0.90)
+        (.sad, 0.86),
+        (.angry, 0.84),
+        (.neutral, 0.90),
+        (.surprised, 0.88),
+        (.disgusted, 0.81),
+        (.fearful, 0.83)
     ]
 
     static var isDemoModeEnabled: Bool {
@@ -150,7 +152,7 @@ final class EmotionClassifier {
 
     func demoClassify(completion: @escaping (EmotionClassification) -> Void) {
         let now = Date()
-        if now.timeIntervalSince(lastDemoUpdate) > 3.2 {
+        if now.timeIntervalSince(lastDemoUpdate) > 2.4 {
             let pair = demoSequence[demoIndex % demoSequence.count]
             demoEmotion = pair.0
             demoConfidence = pair.1
