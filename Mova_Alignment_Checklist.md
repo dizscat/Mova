@@ -15,6 +15,7 @@ Checklist ini merangkum pekerjaan yang perlu diselesaikan agar Mova benar-benar 
 - Demo Vision mode: overlay wajah dan data log sudah dipisahkan dari Core ML final
 - Music playback: MVP membuka link eksternal; API playback penuh masuk future work
 - Music recommendation: mood-based shuffle/gacha dengan lagu multi-bahasa termasuk Mandarin
+- Daily journal voice: text-to-speech untuk membacakan jurnal AI
 
 ## Product Upgrade - Daily AI Journal
 

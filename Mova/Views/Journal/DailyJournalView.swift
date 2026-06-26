@@ -76,6 +76,49 @@ struct DailyJournalView: View {
                     )
                     .listRowBackground(Color.clear)
 
+                    MovaGlassCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack(spacing: 12) {
+                                MovaIconBadge(systemName: "speaker.wave.2.fill")
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("Read Journal Aloud")
+                                        .font(.headline)
+                                        .foregroundColor(MovaTimeMood.current.foreground)
+                                    Text("Let iPhone read the reflection back to you when you want a calmer review.")
+                                        .font(.caption)
+                                        .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                                }
+                            }
+
+                            HStack(spacing: 10) {
+                                Button {
+                                    viewModel.readJournalAloud()
+                                } label: {
+                                    Label(viewModel.isReadingJournal ? "Reading" : "Read", systemImage: "play.fill")
+                                }
+                                .buttonStyle(MovaSecondaryButtonStyle())
+                                .disabled(viewModel.draftText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+
+                                Button {
+                                    viewModel.pauseJournalReading()
+                                } label: {
+                                    Label("Pause", systemImage: "pause.fill")
+                                }
+                                .buttonStyle(MovaSecondaryButtonStyle())
+                                .disabled(!viewModel.isReadingJournal)
+
+                                Button {
+                                    viewModel.stopJournalReading()
+                                } label: {
+                                    Label("Stop", systemImage: "stop.fill")
+                                }
+                                .buttonStyle(MovaSecondaryButtonStyle())
+                            }
+                            .font(.caption.weight(.semibold))
+                        }
+                    }
+                    .listRowBackground(Color.clear)
+
                     Button {
                         Task { await viewModel.save(userId: currentUserId) }
                     } label: {
@@ -148,6 +191,7 @@ struct DailyJournalView: View {
             }
         }
         .task { await viewModel.load(userId: currentUserId) }
+        .onDisappear { viewModel.stopJournalReading() }
     }
 
     private var currentUserId: String {

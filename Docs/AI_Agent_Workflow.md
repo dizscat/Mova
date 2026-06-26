@@ -97,6 +97,10 @@ The current version of Mova uses external music links instead of native playback
 
 Mova's MVP music flow works like a mood-based gacha. The detected emotion selects a playlist pool, then Mova shuffles several tracks from that pool. The pool includes multiple genres and languages, including English, Indonesian, Japanese, Korean, and Mandarin/Chinese songs, so the recommendation feels less repetitive during demos.
 
+## Voice Reflection Support
+
+The Daily AI Journal includes text-to-speech support using Apple's on-device speech synthesis. Users can generate or edit a journal draft, then let the iPhone read it aloud. This supports calmer self-reflection without adding another external API.
+
 ## Demo Vision And Real ML Separation
 
 For deadline-safe demonstrations, Mova can run in Demo Vision mode. In this mode, Vision still tracks the face and shows a moving face overlay, while the emotion label comes from a deterministic demo classifier. Emotion logs store a `detectionSource` value so demo data can be separated from future Core ML results.

@@ -7,9 +7,10 @@
 
 import Foundation
 import Combine
+import AVFoundation
 
 @MainActor
-final class DailyJournalViewModel: ObservableObject {
+final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
 
     @Published var keywords: String = ""
     @Published var draftText: String = ""
@@ -19,15 +20,19 @@ final class DailyJournalViewModel: ObservableObject {
     @Published var statusMessage: String?
     @Published var errorMessage: String?
     @Published var hasSavedJournalForToday: Bool = false
+    @Published var isReadingJournal: Bool = false
 
     private let service = PersistenceManager.shared.service
     private let generator: JournalGenerationServiceProtocol
     private var todayLogs: [EmotionLog] = []
     private var currentJournal: DailyJournal?
     private var latestGeneratedDraft: String?
+    private let speechSynthesizer = AVSpeechSynthesizer()
 
     init(generator: JournalGenerationServiceProtocol = AIJournalService.shared) {
         self.generator = generator
+        super.init()
+        speechSynthesizer.delegate = self
     }
 
     func load(userId: String) async {
@@ -89,6 +94,55 @@ final class DailyJournalViewModel: ObservableObject {
         }
 
         isGenerating = false
+    }
+
+    func readJournalAloud() {
+        let text = draftText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !text.isEmpty else {
+            errorMessage = "Write or generate a journal first."
+            return
+        }
+
+        if speechSynthesizer.isSpeaking {
+            speechSynthesizer.stopSpeaking(at: .immediate)
+        }
+
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.92
+        utterance.pitchMultiplier = 0.96
+        utterance.volume = 0.95
+
+        isReadingJournal = true
+        statusMessage = "Reading your journal aloud."
+        errorMessage = nil
+        speechSynthesizer.speak(utterance)
+    }
+
+    func pauseJournalReading() {
+        guard speechSynthesizer.isSpeaking else { return }
+        speechSynthesizer.pauseSpeaking(at: .word)
+        isReadingJournal = false
+        statusMessage = "Journal reading paused."
+    }
+
+    func stopJournalReading() {
+        speechSynthesizer.stopSpeaking(at: .immediate)
+        isReadingJournal = false
+        statusMessage = "Journal reading stopped."
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in
+            self.isReadingJournal = false
+            self.statusMessage = "Finished reading your journal."
+        }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in
+            self.isReadingJournal = false
+        }
     }
 
     func save(userId: String) async {
