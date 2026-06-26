@@ -35,6 +35,9 @@ struct MusicRecommendationView: View {
                                     Text(mood.playlistName)
                                         .font(.caption)
                                         .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                                    Text("6 random picks from this mood pool")
+                                        .font(.caption2.weight(.semibold))
+                                        .foregroundColor(MovaTimeMood.current.secondaryForeground.opacity(0.9))
                                 }
 
                                 Spacer()
@@ -46,12 +49,12 @@ struct MusicRecommendationView: View {
                     Section {
                         MovaGlassCard {
                             HStack(spacing: 12) {
-                                MovaIconBadge(systemName: "arrow.up.right.music.note")
+                                MovaIconBadge(systemName: "dice.fill")
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("External music links")
+                                    Text("Mood gacha shuffle")
                                         .font(.headline)
                                         .foregroundColor(MovaTimeMood.current.foreground)
-                                    Text("Mova recommends tracks from your detected mood, then opens Apple Music search or the web. Full in-app playback is planned for a later version.")
+                                    Text("Your scanned emotion chooses the playlist pool, then Mova shuffles a few multilingual tracks. Tap Open to search Apple Music or the web.")
                                         .font(.caption)
                                         .foregroundColor(MovaTimeMood.current.secondaryForeground)
                                 }
