@@ -17,6 +17,9 @@ final class DetectionViewModel: ObservableObject {
     @Published var confidence: Double = 0
     @Published var isDetecting: Bool = false
     @Published var faceDetected: Bool = false
+    @Published var faceBounds: NormalizedFaceBounds?
+    @Published var landmarkConfidence: Double = 0
+    @Published var detectionSource: DetectionSource = .unknown
 
     // Service yang dimiliki ViewModel.
     let cameraManager = CameraManager()
@@ -56,38 +59,35 @@ final class DetectionViewModel: ObservableObject {
         guard isDetecting, !isProcessingFrame else { return }
         isProcessingFrame = true
 
-        if EmotionClassifier.isDemoModeEnabled {
-            classifier.classify(pixelBuffer: pixelBuffer) { [weak self] emotion, confidence in
-                Task { @MainActor in
-                    self?.faceDetected = true
-                    self?.currentEmotion = emotion
-                    self?.confidence = confidence
-                    self?.isProcessingFrame = false
-                }
-            }
-            return
-        }
-
         faceDetector.detectFace(in: pixelBuffer) { [weak self] face in
             guard let self = self else { return }
 
             guard face != nil else {
                 Task { @MainActor in
                     self.faceDetected = false
+                    self.faceBounds = nil
+                    self.landmarkConfidence = 0
                     self.currentEmotion = nil
                     self.confidence = 0
+                    self.detectionSource = .unknown
                     self.isProcessingFrame = false
                 }
                 return
             }
 
-            // Wajah terdeteksi -> klasifikasi emosi via Core ML.
-            // (classify otomatis fallback ke mock bila model tidak tersedia.)
-            self.classifier.classify(pixelBuffer: pixelBuffer) { emotion, confidence in
+            let bounds = NormalizedFaceBounds(rect: face!.boundingBox)
+            let faceConfidence = Double(face!.confidence)
+
+            // Wajah terdeteksi -> klasifikasi emosi. Dalam Demo Mode, Vision
+            // tetap melacak wajah, tetapi label emosi berasal dari demo classifier.
+            self.classifier.classify(pixelBuffer: pixelBuffer) { result in
                 Task { @MainActor in
                     self.faceDetected = true
-                    self.currentEmotion = emotion
-                    self.confidence = confidence
+                    self.faceBounds = bounds
+                    self.landmarkConfidence = faceConfidence
+                    self.currentEmotion = result.emotion
+                    self.confidence = result.confidence
+                    self.detectionSource = result.source
                     self.isProcessingFrame = false
                 }
             }
@@ -108,7 +108,14 @@ final class DetectionViewModel: ObservableObject {
             emotion: emotion,
             confidence: confidence,
             recommendedGenre: recommendation.genre,
-            musicMoodId: recommendation.id
+            musicMoodId: recommendation.id,
+            detectionSource: detectionSource,
+            faceTracking: faceBounds.map {
+                FaceTrackingSnapshot(
+                    normalizedBounds: $0,
+                    landmarkConfidence: landmarkConfidence
+                )
+            }
         )
 
         do {

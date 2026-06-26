@@ -18,6 +18,8 @@ final class ProfileViewModel: ObservableObject {
     @Published var currentStreak: Int = 0
     @Published var mostFrequentEmotion: EmotionType?
     @Published var lastSessionDate: Date?
+    @Published var demoSessions: Int = 0
+    @Published var realSessions: Int = 0
 
     private let service = PersistenceManager.shared.service
 
@@ -27,6 +29,8 @@ final class ProfileViewModel: ObservableObject {
             let journals = try await service.fetchDailyJournals(forUserId: userId)
 
             totalSessions = logs.count
+            demoSessions = logs.filter { $0.detectionSource.isDemoData }.count
+            realSessions = logs.filter { $0.detectionSource == .coreML }.count
             todaySessions = logs.filter { Calendar.current.isDateInToday($0.timestamp) }.count
             journalCount = journals.count
             mostFrequentEmotion = computeMostFrequent(logs)

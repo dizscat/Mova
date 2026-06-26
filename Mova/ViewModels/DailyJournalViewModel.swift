@@ -142,7 +142,17 @@ final class DailyJournalViewModel: ObservableObject {
             return "\(emotion.displayName.lowercased()) \(count)x"
         }
 
-        return "Today's mood was recorded \(logs.count)x: \(parts.joined(separator: ", "))."
+        let demoCount = logs.filter { $0.detectionSource.isDemoData }.count
+        let sourceNote: String
+        if demoCount == logs.count {
+            sourceNote = " All entries came from Demo Vision mode."
+        } else if demoCount > 0 {
+            sourceNote = " \(demoCount) entries came from Demo Vision mode."
+        } else {
+            sourceNote = ""
+        }
+
+        return "Today's mood was recorded \(logs.count)x: \(parts.joined(separator: ", ")).\(sourceNote)"
     }
 
     private func dominantEmotion(from logs: [EmotionLog]) -> EmotionType? {

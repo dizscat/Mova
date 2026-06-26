@@ -33,6 +33,14 @@ struct DetectionView: View {
                         )
                         .ignoresSafeArea()
                     )
+                    .overlay(
+                        FaceTrackingOverlayView(
+                            faceBounds: viewModel.faceBounds,
+                            source: viewModel.detectionSource,
+                            landmarkConfidence: viewModel.landmarkConfidence
+                        )
+                        .ignoresSafeArea()
+                    )
             } else {
                 permissionDeniedView
             }
@@ -42,7 +50,8 @@ struct DetectionView: View {
 
                 EmotionOverlayView(
                     emotion: viewModel.currentEmotion,
-                    confidence: viewModel.confidence
+                    confidence: viewModel.confidence,
+                    source: viewModel.detectionSource
                 )
                 .padding(.bottom, 8)
                 .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -108,5 +117,84 @@ struct DetectionView_Previews: PreviewProvider {
     static var previews: some View {
         DetectionView()
             .environmentObject(AppState())
+    }
+}
+
+private struct FaceTrackingOverlayView: View {
+
+    let faceBounds: NormalizedFaceBounds?
+    let source: DetectionSource
+    let landmarkConfidence: Double
+
+    var body: some View {
+        GeometryReader { proxy in
+            if let faceBounds {
+                let rect = previewRect(for: faceBounds, in: proxy.size)
+
+                ZStack(alignment: .topLeading) {
+                    RoundedRectangle(cornerRadius: 28, style: .continuous)
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [.white.opacity(0.95), .cyan.opacity(0.82), .white.opacity(0.55)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 3
+                        )
+                        .frame(width: rect.width, height: rect.height)
+                        .position(x: rect.midX, y: rect.midY)
+                        .shadow(color: .cyan.opacity(0.38), radius: 18)
+
+                    faceGuide(in: rect)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(source == .coreML ? "Face locked" : "Demo face lock")
+                            .font(.caption.bold())
+                        Text("Vision tracking \(Int(landmarkConfidence * 100))%")
+                            .font(.caption2.weight(.medium))
+                            .opacity(0.82)
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(.black.opacity(0.34), in: Capsule())
+                    .position(x: rect.midX, y: max(64, rect.minY - 22))
+                }
+                .transition(.opacity.combined(with: .scale(scale: 0.98)))
+            }
+        }
+        .animation(.easeInOut(duration: 0.24), value: faceBounds)
+        .allowsHitTesting(false)
+    }
+
+    private func faceGuide(in rect: CGRect) -> some View {
+        ZStack {
+            Circle()
+                .fill(.white.opacity(0.9))
+                .frame(width: 7, height: 7)
+                .position(x: rect.minX + rect.width * 0.35, y: rect.minY + rect.height * 0.38)
+            Circle()
+                .fill(.white.opacity(0.9))
+                .frame(width: 7, height: 7)
+                .position(x: rect.minX + rect.width * 0.65, y: rect.minY + rect.height * 0.38)
+
+            Capsule()
+                .fill(.white.opacity(0.72))
+                .frame(width: rect.width * 0.28, height: 4)
+                .position(x: rect.midX, y: rect.minY + rect.height * 0.68)
+
+            Capsule()
+                .fill(.cyan.opacity(0.42))
+                .frame(width: rect.width * 0.82, height: 2)
+                .position(x: rect.midX, y: rect.minY + rect.height * 0.52)
+        }
+    }
+
+    private func previewRect(for bounds: NormalizedFaceBounds, in size: CGSize) -> CGRect {
+        let width = CGFloat(bounds.width) * size.width
+        let height = CGFloat(bounds.height) * size.height
+        let x = CGFloat(bounds.x) * size.width
+        let y = (1 - CGFloat(bounds.y) - CGFloat(bounds.height)) * size.height
+        return CGRect(x: x, y: y, width: width, height: height).insetBy(dx: -18, dy: -24)
     }
 }

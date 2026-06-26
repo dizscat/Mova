@@ -99,6 +99,9 @@ struct JournalView: View {
                                             Text(Self.dateFormatter.string(from: log.timestamp))
                                                 .font(.caption)
                                                 .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                                            Text(log.detectionSource.displayName)
+                                                .font(.caption2.weight(.semibold))
+                                                .foregroundColor(MovaTimeMood.current.secondaryForeground.opacity(0.9))
                                         }
                                         Spacer()
                                         Text("\(Int(log.confidence * 100))%")

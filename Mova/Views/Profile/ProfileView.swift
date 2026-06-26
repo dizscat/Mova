@@ -101,6 +101,14 @@ struct ProfileView: View {
                         value: viewModel.lastSessionDate.map { Self.dateFormatter.string(from: $0) } ?? "No detections yet"
                     )
 
+                    Divider().opacity(0.28)
+
+                    insightRow(
+                        icon: "waveform.path.ecg.rectangle.fill",
+                        title: "Detection data",
+                        value: "Demo \(viewModel.demoSessions) / Core ML \(viewModel.realSessions)"
+                    )
+
                     Text(patternHint)
                         .font(.caption)
                         .foregroundColor(MovaTimeMood.current.secondaryForeground)

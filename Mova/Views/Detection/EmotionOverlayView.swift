@@ -11,6 +11,7 @@ struct EmotionOverlayView: View {
 
     let emotion: EmotionType?
     let confidence: Double
+    let source: DetectionSource
 
     var body: some View {
         MovaGlassCard {
@@ -24,12 +25,20 @@ struct EmotionOverlayView: View {
                         .font(.system(.title2, design: .rounded).bold())
                         .foregroundColor(.white)
 
-                    VStack(spacing: 6) {
+                    VStack(spacing: 8) {
                         ProgressView(value: confidence)
                             .tint(Color(hex: emotion.colorHex))
                         Text("Confidence: \(Int(confidence * 100))%")
                             .font(.caption.weight(.semibold))
                             .foregroundColor(.white.opacity(0.82))
+
+                        Text(source.displayName)
+                            .font(.caption2.weight(.bold))
+                            .textCase(.uppercase)
+                            .foregroundColor(.white.opacity(0.9))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(.white.opacity(source.isDemoData ? 0.18 : 0.12), in: Capsule())
                     }
                     .frame(maxWidth: 230)
                 } else {
@@ -66,7 +75,7 @@ struct EmotionOverlayView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.black
-            EmotionOverlayView(emotion: .happy, confidence: 0.87)
+            EmotionOverlayView(emotion: .happy, confidence: 0.87, source: .demoVision)
         }
     }
 }

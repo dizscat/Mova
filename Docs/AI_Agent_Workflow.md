@@ -89,6 +89,12 @@ The agents collaborated through a sequential workflow:
 3. The UX & Testing Agent reviewed the product flow, identified friction points, and refined the app for usability and demo readiness.
 4. Feedback from testing was routed back to the Architecture Agent when data flow needed changes, or to the AI/ML Feature Agent when AI behavior needed adjustment.
 
+## Demo Vision And Real ML Separation
+
+For deadline-safe demonstrations, Mova can run in Demo Vision mode. In this mode, Vision still tracks the face and shows a moving face overlay, while the emotion label comes from a deterministic demo classifier. Emotion logs store a `detectionSource` value so demo data can be separated from future Core ML results.
+
+When the final model is trained on another Mac, the app can use the new `EmotionClassifierModel.mlmodel` and disable Demo Vision mode. Existing demo logs remain identifiable because they are saved as `demoVision`, while real model logs are saved as `coreML`.
+
 ## Development Notes
 
 - The agents were used as AI-assisted development collaborators, not as third-party runtime libraries.

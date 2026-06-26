@@ -15,6 +15,12 @@ import Vision
 import CoreML
 import CoreVideo
 
+struct EmotionClassification {
+    let emotion: EmotionType?
+    let confidence: Double
+    let source: DetectionSource
+}
+
 final class EmotionClassifier {
 
     private var demoIndex = 0
@@ -66,7 +72,7 @@ final class EmotionClassifier {
     /// Klasifikasi emosi nyata via Core ML. Saat model belum ada, otomatis
     /// fallback ke `mockClassify`.
     func classify(pixelBuffer: CVPixelBuffer,
-                  completion: @escaping (EmotionType?, Double) -> Void) {
+                  completion: @escaping (EmotionClassification) -> Void) {
 
         if Self.isDemoModeEnabled {
             demoClassify(completion: completion)
@@ -82,16 +88,16 @@ final class EmotionClassifier {
         let request = VNCoreMLRequest(model: visionModel) { request, error in
             if let error = error {
                 print("EmotionClassifier error: \(error.localizedDescription)")
-                completion(nil, 0)
+                completion(EmotionClassification(emotion: nil, confidence: 0, source: .coreML))
                 return
             }
             guard let results = request.results as? [VNClassificationObservation],
                   let top = results.first else {
-                completion(nil, 0)
+                completion(EmotionClassification(emotion: nil, confidence: 0, source: .coreML))
                 return
             }
             let emotion = Self.mapLabel(top.identifier)
-            completion(emotion, Double(top.confidence))
+            completion(EmotionClassification(emotion: emotion, confidence: Double(top.confidence), source: .coreML))
         }
 
         // Vision akan otomatis resize/crop sesuai input model.
@@ -108,7 +114,7 @@ final class EmotionClassifier {
                 try handler.perform([request])
             } catch {
                 print("EmotionClassifier perform error: \(error.localizedDescription)")
-                completion(nil, 0)
+                completion(EmotionClassification(emotion: nil, confidence: 0, source: .coreML))
             }
         }
     }
@@ -133,16 +139,16 @@ final class EmotionClassifier {
     /// TODO: HAPUS / ganti ke `classify(pixelBuffer:)` setelah model Core ML
     ///       benar-benar tersedia. Sekarang mengembalikan emosi + confidence acak
     ///       supaya alur app (UI, journal, rekomendasi) bisa diuji tanpa model.
-    func mockClassify(completion: @escaping (EmotionType?, Double) -> Void) {
+    func mockClassify(completion: @escaping (EmotionClassification) -> Void) {
         let emotion = EmotionType.allCases.randomElement()
         let confidence = Double.random(in: 0.65...0.99)
         // Tiru latensi inferensi & kembali ke main thread untuk update UI.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            completion(emotion, confidence)
+            completion(EmotionClassification(emotion: emotion, confidence: confidence, source: .mock))
         }
     }
 
-    func demoClassify(completion: @escaping (EmotionType?, Double) -> Void) {
+    func demoClassify(completion: @escaping (EmotionClassification) -> Void) {
         let now = Date()
         if now.timeIntervalSince(lastDemoUpdate) > 3.2 {
             let pair = demoSequence[demoIndex % demoSequence.count]
@@ -153,7 +159,7 @@ final class EmotionClassifier {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
-            completion(self.demoEmotion, self.demoConfidence)
+            completion(EmotionClassification(emotion: self.demoEmotion, confidence: self.demoConfidence, source: .demoVision))
         }
     }
 }
