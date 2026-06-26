@@ -20,14 +20,6 @@
 		3800B044310C249337AEEAB8 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE7E5E8B83A9A9719E62CF7 /* JournalView.swift */; };
 		3B32E6166200F8294F891578 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEEF20644781CA9815F45F1 /* DetectionView.swift */; };
 		420A25EEAEBBC84DBF2D6F7C /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41913E64AD64844611AD8614 /* MusicViewModel.swift */; };
-		AA11AA11AA11AA11AA11AA11 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22AA22AA22AA22AA22AA22 /* Track.swift */; };
-		BB11BB11BB11BB11BB11BB11 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22BB22BB22BB22BB22BB22 /* Streak.swift */; };
-		CC11CC11CC11CC11CC11CC11 /* DailyJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */; };
-		DD11DD11DD11DD11DD11DD11 /* AIJournalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */; };
-		EE11EE11EE11EE11EE11EE11 /* DailyJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */; };
-		FF11FF11FF11FF11FF11FF11 /* DailyJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */; };
-		AB11AB11AB11AB11AB11AB11 /* MovaAesthetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */; };
-		AC11AC11AC11AC11AC11AC11 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */; };
 		490CC2D1C4F8819F930F0930 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56ADC8D8BD1CDE5F06F7829 /* JournalViewModel.swift */; };
 		4D93FB7CF26CB9A8A02562D6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE1157C9FCD58A5682CB890 /* AuthViewModel.swift */; };
 		5344D466DF9EBD04EFFDDC05 /* EmotionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01E0941D3B3D8D1F17AF269 /* EmotionChartView.swift */; };
@@ -38,16 +30,24 @@
 		7A8227D6AEA200391CB0E7FD /* EmotionClassifierModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */; };
 		98522CD4E49400EFC937D44F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80637C62643B74860B3AC899 /* UserProfile.swift */; };
 		9AD4E6CFA920837DD4EAADCA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC9F32361E24C91FA83A374 /* PersistenceManager.swift */; };
+		AA11AA11AA11AA11AA11AA11 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22AA22AA22AA22AA22AA22 /* Track.swift */; };
+		AB11AB11AB11AB11AB11AB11 /* MovaAesthetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */; };
+		AC11AC11AC11AC11AC11AC11 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */; };
 		AC3BA0FC076F92DF3320D93F /* DetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3D85C9D2EAC590737FE15 /* DetectionViewModel.swift */; };
 		B1DC76839B37B4C74306F206 /* FaceLandmarkDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2782A23BC9966A6095BA8480 /* FaceLandmarkDetector.swift */; };
 		B29B498A5883755895DC797F /* MusicRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212F122C7C8CFC7956998469 /* MusicRecommendationView.swift */; };
 		B91A40D012133C82A1C09FD8 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E386F894BC003ADF3E4B2C /* CameraManager.swift */; };
+		BB11BB11BB11BB11BB11BB11 /* Streak.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22BB22BB22BB22BB22BB22 /* Streak.swift */; };
 		C10976841812F8BCD8B3CD0F /* EmotionClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051B33C15B519130A6F476C3 /* EmotionClassifier.swift */; };
 		CB846D2AF733ABC7A3AAB363 /* MusicMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B41CE29F96B8F1EAE62494 /* MusicMapper.swift */; };
+		CC11CC11CC11CC11CC11CC11 /* DailyJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */; };
 		CC3D782521B7ED7C1B70B92E /* PersistenceServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F79383AEAEAED3150652429 /* PersistenceServiceProtocol.swift */; };
 		D826F803C9760B412BB1F92B /* TrackRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F84F936AFE1539246D1091 /* TrackRowView.swift */; };
+		DD11DD11DD11DD11DD11DD11 /* AIJournalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */; };
 		E2E9FCE60A59B67D60B93060 /* MusicMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9F8B159E16BC18AEF083EA /* MusicMood.swift */; };
 		EE088A2C6726E8D3ADC62BAF /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63DE32ABD22B8365B3039AD /* LocalStorageService.swift */; };
+		EE11EE11EE11EE11EE11EE11 /* DailyJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */; };
+		FF11FF11FF11FF11FF11FF11 /* DailyJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +61,7 @@
 		17DE61302FE3FE6700215BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17DE61332FE3FE6700215BD2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		19B41CE29F96B8F1EAE62494 /* MusicMapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicMapper.swift; sourceTree = "<group>"; };
-		1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; path = EmotionClassifierModel.mlmodel; sourceTree = "<group>"; };
+		1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.mlmodel; path = EmotionClassifierModel.mlmodel; sourceTree = "<group>"; };
 		1F79383AEAEAED3150652429 /* PersistenceServiceProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PersistenceServiceProtocol.swift; sourceTree = "<group>"; };
 		212F122C7C8CFC7956998469 /* MusicRecommendationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicRecommendationView.swift; sourceTree = "<group>"; };
 		2782A23BC9966A6095BA8480 /* FaceLandmarkDetector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FaceLandmarkDetector.swift; sourceTree = "<group>"; };
@@ -80,20 +80,20 @@
 		9F9F8B159E16BC18AEF083EA /* MusicMood.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MusicMood.swift; sourceTree = "<group>"; };
 		A01E0941D3B3D8D1F17AF269 /* EmotionChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EmotionChartView.swift; sourceTree = "<group>"; };
 		AA22AA22AA22AA22AA22AA22 /* Track.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		AEE1157C9FCD58A5682CB890 /* AuthViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		BB22BB22BB22BB22BB22BB22 /* Streak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
-		CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournal.swift; sourceTree = "<group>"; };
-		DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AIJournalService.swift; sourceTree = "<group>"; };
-		EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournalViewModel.swift; sourceTree = "<group>"; };
-		FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournalView.swift; sourceTree = "<group>"; };
 		AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MovaAesthetic.swift; sourceTree = "<group>"; };
 		AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		AD22AD22AD22AD22AD22AD22 /* MovaSecrets.example.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = MovaSecrets.example.plist; sourceTree = "<group>"; };
+		AEE1157C9FCD58A5682CB890 /* AuthViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		B56ADC8D8BD1CDE5F06F7829 /* JournalViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
+		BB22BB22BB22BB22BB22BB22 /* Streak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Streak.swift; sourceTree = "<group>"; };
 		BDEEF20644781CA9815F45F1 /* DetectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
 		C186471C3D66B96FDE784862 /* AppState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CC22CC22CC22CC22CC22CC22 /* DailyJournal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournal.swift; sourceTree = "<group>"; };
+		DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AIJournalService.swift; sourceTree = "<group>"; };
 		E5E386F894BC003ADF3E4B2C /* CameraManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		EE22EE22EE22EE22EE22EE22 /* DailyJournalViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournalViewModel.swift; sourceTree = "<group>"; };
 		F63DE32ABD22B8365B3039AD /* LocalStorageService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
+		FF22FF22FF22FF22FF22FF22 /* DailyJournalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DailyJournalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,6 @@
 				BDEEF20644781CA9815F45F1 /* DetectionView.swift */,
 				6F79A1B083677905A68B181B /* EmotionOverlayView.swift */,
 			);
-			name = Detection;
 			path = Detection;
 			sourceTree = "<group>";
 		};
@@ -122,7 +121,6 @@
 			children = (
 				158B0D83E7E291579966C63E /* LoginView.swift */,
 			);
-			name = Auth;
 			path = Auth;
 			sourceTree = "<group>";
 		};
@@ -178,7 +176,6 @@
 				41913E64AD64844611AD8614 /* MusicViewModel.swift */,
 				2AF11B62E840772B2A040520 /* ProfileViewModel.swift */,
 			);
-			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -189,7 +186,6 @@
 				A01E0941D3B3D8D1F17AF269 /* EmotionChartView.swift */,
 				9EE7E5E8B83A9A9719E62CF7 /* JournalView.swift */,
 			);
-			name = Journal;
 			path = Journal;
 			sourceTree = "<group>";
 		};
@@ -199,7 +195,6 @@
 				6CE42D49C2B6BD5E95AB4A7F /* MusicKitService.swift */,
 				19B41CE29F96B8F1EAE62494 /* MusicMapper.swift */,
 			);
-			name = Music;
 			path = Music;
 			sourceTree = "<group>";
 		};
@@ -210,7 +205,6 @@
 				5AC9F32361E24C91FA83A374 /* PersistenceManager.swift */,
 				1F79383AEAEAED3150652429 /* PersistenceServiceProtocol.swift */,
 			);
-			name = Persistence;
 			path = Persistence;
 			sourceTree = "<group>";
 		};
@@ -219,7 +213,6 @@
 			children = (
 				011AC76CA97DED301147BE15 /* ProfileView.swift */,
 			);
-			name = Profile;
 			path = Profile;
 			sourceTree = "<group>";
 		};
@@ -229,7 +222,6 @@
 				212F122C7C8CFC7956998469 /* MusicRecommendationView.swift */,
 				42F84F936AFE1539246D1091 /* TrackRowView.swift */,
 			);
-			name = Music;
 			path = Music;
 			sourceTree = "<group>";
 		};
@@ -244,7 +236,6 @@
 				A63CFA39A921BAACF150AD49 /* Music */,
 				95F7F27332DAD169237BD16B /* Profile */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -253,7 +244,6 @@
 			children = (
 				AB22AB22AB22AB22AB22AB22 /* MovaAesthetic.swift */,
 			);
-			name = Components;
 			path = Components;
 			sourceTree = "<group>";
 		};
@@ -262,7 +252,6 @@
 			children = (
 				AC22AC22AC22AC22AC22AC22 /* DashboardView.swift */,
 			);
-			name = Home;
 			path = Home;
 			sourceTree = "<group>";
 		};
@@ -271,7 +260,6 @@
 			children = (
 				AD22AD22AD22AD22AD22AD22 /* MovaSecrets.example.plist */,
 			);
-			name = Resources;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -281,7 +269,6 @@
 				051B33C15B519130A6F476C3 /* EmotionClassifier.swift */,
 				2782A23BC9966A6095BA8480 /* FaceLandmarkDetector.swift */,
 			);
-			name = Vision;
 			path = Vision;
 			sourceTree = "<group>";
 		};
@@ -294,7 +281,6 @@
 				9179CA3A2DF99A994FCF5CEF /* Persistence */,
 				AE132D4D1BAA5C02AC37CE84 /* Vision */,
 			);
-			name = Services;
 			path = Services;
 			sourceTree = "<group>";
 		};
@@ -303,7 +289,6 @@
 			children = (
 				1CC487B712861C4449249757 /* EmotionClassifierModel.mlmodel */,
 			);
-			name = ML;
 			path = ML;
 			sourceTree = "<group>";
 		};
@@ -312,7 +297,6 @@
 			children = (
 				DD22DD22DD22DD22DD22DD22 /* AIJournalService.swift */,
 			);
-			name = AI;
 			path = AI;
 			sourceTree = "<group>";
 		};
@@ -322,7 +306,6 @@
 				C186471C3D66B96FDE784862 /* AppState.swift */,
 				0829EDD1D9690C0BBA231688 /* RootView.swift */,
 			);
-			name = App;
 			path = App;
 			sourceTree = "<group>";
 		};
@@ -332,7 +315,6 @@
 				E5E386F894BC003ADF3E4B2C /* CameraManager.swift */,
 				5DA576D5E0309654A9A99A82 /* CameraPreviewView.swift */,
 			);
-			name = Camera;
 			path = Camera;
 			sourceTree = "<group>";
 		};
@@ -347,7 +329,6 @@
 				BB22BB22BB22BB22BB22BB22 /* Streak.swift */,
 				80637C62643B74860B3AC899 /* UserProfile.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -588,6 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mova/Preview Content\"";
+				DEVELOPMENT_TEAM = ZV72HLVDD8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_MovaDemoEmotionMode = YES;
@@ -620,6 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Mova/Preview Content\"";
+				DEVELOPMENT_TEAM = ZV72HLVDD8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_MovaDemoEmotionMode = NO;
