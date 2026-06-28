@@ -23,3 +23,7 @@ MLTrainingData/
 
 # Local Create ML training projects
 *.mlproj/
+
+# Local temporary inspection folders
+tmp_inspect/
+tmp_py/

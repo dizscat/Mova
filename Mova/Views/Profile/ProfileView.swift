@@ -50,7 +50,7 @@ struct ProfileView: View {
                         Text(authViewModel.displayName.isEmpty ? "Mova User" : authViewModel.displayName)
                             .font(.system(.title3, design: .rounded).bold())
                             .foregroundColor(MovaTimeMood.current.foreground)
-                        Text("Local mood profile")
+                        Text(authViewModel.usesFirebaseAuth ? "Cloud-connected mood profile" : "Local mood profile")
                             .font(.caption)
                             .foregroundColor(MovaTimeMood.current.secondaryForeground)
                     }
@@ -131,7 +131,9 @@ struct ProfileView: View {
                     insightRow(
                         icon: "externaldrive.fill",
                         title: "Storage",
-                        value: "Logs and journals are stored locally"
+                        value: authViewModel.usesFirebaseAuth
+                            ? "Auth via Firebase, logs and journals synced through Firestore"
+                            : "Logs and journals are stored locally"
                     )
                 }
             }

@@ -22,6 +22,7 @@ The script:
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import random
 import shutil
@@ -31,6 +32,8 @@ import tempfile
 import zipfile
 from collections import defaultdict
 from pathlib import Path
+
+from PIL import Image
 
 
 LABEL_MAP = {
@@ -71,9 +74,9 @@ AUGMENTATIONS = [
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--zip",
+        "--input",
         default="/Users/a18/Downloads/archive (1).zip",
-        help="Path to FER2013 image-folder zip.",
+        help="Path to FER2013 image-folder zip or extracted folder.",
     )
     parser.add_argument(
         "--output",
@@ -115,16 +118,37 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Do not delete output directory before writing.",
     )
+    parser.add_argument(
+        "--temp-dir",
+        default="",
+        help="Optional temp directory for augmentation work files.",
+    )
     return parser.parse_args()
 
 
-def collect_images(zip_path: Path) -> dict[str, dict[str, list[str]]]:
+def collect_images(source_path: Path) -> dict[str, dict[str, list[str]]]:
     images: dict[str, dict[str, list[str]]] = {
         "train": defaultdict(list),
         "test": defaultdict(list),
     }
 
-    with zipfile.ZipFile(zip_path) as archive:
+    if source_path.is_dir():
+        for path in source_path.rglob("*"):
+            if not path.is_file():
+                continue
+            relative = path.relative_to(source_path).as_posix()
+            parts = relative.split("/")
+            if len(parts) != 3:
+                continue
+            split, raw_label, filename = parts
+            if split not in images or raw_label not in LABEL_MAP:
+                continue
+            if not filename.lower().endswith((".jpg", ".jpeg", ".png")):
+                continue
+            images[split][LABEL_MAP[raw_label]].append(relative)
+        return images
+
+    with zipfile.ZipFile(source_path) as archive:
         for name in archive.namelist():
             parts = name.split("/")
             if len(parts) != 3:
@@ -153,20 +177,47 @@ def safe_name(prefix: str, archive_name: str) -> str:
     return f"{prefix}_{stem}{suffix}"
 
 
-def extract_member(archive: zipfile.ZipFile, member: str, destination: Path) -> None:
+def extract_member(source_root: Path | None, archive: zipfile.ZipFile | None, member: str, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
+    if source_root is not None:
+        shutil.copy2(source_root / Path(member), destination)
+        return
+
+    if archive is None:
+        raise RuntimeError("Archive source missing for zip extraction.")
+
     with archive.open(member) as source, destination.open("wb") as target:
         shutil.copyfileobj(source, target)
 
 
+def augment_with_pillow(source: Path, destination: Path, args: list[str]) -> bool:
+    try:
+        with Image.open(source) as image:
+            transformed = image.copy()
+            if len(args) >= 2 and args[0] == "-f" and args[1] == "horizontal":
+                transformed = transformed.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+            if "-r" in args:
+                index = args.index("-r")
+                angle = float(args[index + 1])
+                transformed = transformed.rotate(angle, resample=Image.Resampling.BILINEAR)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            transformed.save(destination)
+        return destination.exists()
+    except Exception:
+        return False
+
+
 def augment_with_sips(source: Path, destination: Path, args: list[str]) -> bool:
     command = ["sips", *args, str(source), "-o", str(destination)]
-    result = subprocess.run(
-        command,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            command,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+    except FileNotFoundError:
+        return False
     return result.returncode == 0 and destination.exists()
 
 
@@ -177,17 +228,18 @@ def duplicate_as_fallback(source: Path, destination: Path) -> None:
 def prepare_dataset(args: argparse.Namespace) -> dict[str, object]:
     random.seed(args.seed)
 
-    zip_path = Path(args.zip)
+    source_path = Path(args.input)
     output = Path(args.output)
-    if not zip_path.exists():
-        raise FileNotFoundError(f"Zip not found: {zip_path}")
+    if not source_path.exists():
+        raise FileNotFoundError(f"Input not found: {source_path}")
 
     reset_output(output, args.keep_existing)
-    images = collect_images(zip_path)
+    images = collect_images(source_path)
 
     summary: dict[str, object] = {
-        "source_zip": str(zip_path),
+        "source_input": str(source_path),
         "output": str(output.resolve()),
+        "temp_dir": str(Path(args.temp_dir).resolve()) if args.temp_dir else None,
         "target_train_per_class": args.target_train_per_class,
         "validation_ratio": args.validation_ratio,
         "max_validation_per_class": args.max_validation_per_class,
@@ -205,8 +257,16 @@ def prepare_dataset(args: argparse.Namespace) -> dict[str, object]:
         ],
     }
 
-    with zipfile.ZipFile(zip_path) as archive, tempfile.TemporaryDirectory() as tmp:
-        tmpdir = Path(tmp)
+    archive_cm = zipfile.ZipFile(source_path) if source_path.is_file() else contextlib.nullcontext(None)
+    temp_root = Path(args.temp_dir) if args.temp_dir else Path(tempfile.gettempdir())
+    temp_root.mkdir(parents=True, exist_ok=True)
+    tmpdir = temp_root / "prepare_fer2013_work"
+    if tmpdir.exists():
+        shutil.rmtree(tmpdir, ignore_errors=True)
+    tmpdir.mkdir(parents=True, exist_ok=True)
+
+    with archive_cm as archive:
+        source_root = source_path if source_path.is_dir() else None
 
         for label in MOVA_LABELS:
             members = list(images["train"][label])
@@ -220,7 +280,7 @@ def prepare_dataset(args: argparse.Namespace) -> dict[str, object]:
 
             for member in validation_members:
                 destination = output / "validation" / label / safe_name("val", member)
-                extract_member(archive, member, destination)
+                extract_member(source_root, archive, member, destination)
 
             if len(train_pool) >= args.target_train_per_class:
                 selected_train = random.sample(train_pool, args.target_train_per_class)
@@ -230,7 +290,7 @@ def prepare_dataset(args: argparse.Namespace) -> dict[str, object]:
             original_train_files: list[Path] = []
             for member in selected_train:
                 destination = output / "train" / label / safe_name("orig", member)
-                extract_member(archive, member, destination)
+                extract_member(source_root, archive, member, destination)
                 original_train_files.append(destination)
 
             needed = args.target_train_per_class - len(original_train_files)
@@ -251,7 +311,11 @@ def prepare_dataset(args: argparse.Namespace) -> dict[str, object]:
                     # Use a temp copy so sips never mutates the selected original.
                     temp_source = tmpdir / f"{label}_{index}_{source.name}"
                     shutil.copy2(source, temp_source)
-                    if not augment_with_sips(temp_source, destination, aug_args):
+                    if not augment_with_sips(temp_source, destination, aug_args) and not augment_with_pillow(
+                        temp_source,
+                        destination,
+                        aug_args,
+                    ):
                         duplicate_as_fallback(source, destination)
 
             test_members = list(images["test"][label])
@@ -261,7 +325,9 @@ def prepare_dataset(args: argparse.Namespace) -> dict[str, object]:
 
             for member in test_members:
                 destination = output / "test" / label / safe_name("test", member)
-                extract_member(archive, member, destination)
+                extract_member(source_root, archive, member, destination)
+
+    shutil.rmtree(tmpdir, ignore_errors=True)
 
     for split in ("train", "validation", "test"):
         for label in MOVA_LABELS:

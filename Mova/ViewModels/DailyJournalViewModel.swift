@@ -15,6 +15,7 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
     @Published var keywords: String = ""
     @Published var draftText: String = ""
     @Published var moodSummary: String = "No mood has been recorded today yet."
+    @Published var musicSummary: String = "No music recommendation has been linked to today's mood yet."
     @Published var savedJournals: [DailyJournal] = []
     @Published var isGenerating: Bool = false
     @Published var statusMessage: String?
@@ -43,6 +44,7 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
             currentJournal = try await service.fetchDailyJournal(forUserId: userId, on: Date())
             hasSavedJournalForToday = currentJournal != nil
             moodSummary = makeMoodSummary(from: todayLogs)
+            musicSummary = makeMusicSummary(from: todayLogs, journal: currentJournal)
         } catch {
             errorMessage = "Failed to load your daily journal."
             print("DailyJournalViewModel load error: \(error.localizedDescription)")
@@ -54,6 +56,7 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
         keywords = currentJournal.userKeywords
         draftText = currentJournal.finalText
         latestGeneratedDraft = currentJournal.aiDraft
+        musicSummary = makeMusicSummary(from: todayLogs, journal: currentJournal)
         statusMessage = "Saved journal loaded."
         errorMessage = nil
     }
@@ -66,7 +69,7 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
         errorMessage = nil
     }
 
-    func generateDraft(userId: String) async {
+    func generateDraft() async {
         let trimmedKeywords = keywords.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedKeywords.isEmpty else {
             errorMessage = "Write a few keywords first."
@@ -157,12 +160,16 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
         let calendar = Calendar.current
         let now = Date()
         let createdAt = currentJournal?.createdAt ?? now
+        let musicRecommendation = dailyMusicRecommendation(from: todayLogs)
         let journal = DailyJournal(
             id: currentJournal?.id ?? UUID().uuidString,
             userId: userId,
             date: calendar.startOfDay(for: now),
             userKeywords: trimmedKeywords,
             moodSummary: moodSummary,
+            recommendedGenre: musicRecommendation?.genre,
+            musicMoodId: musicRecommendation?.id,
+            playlistName: musicRecommendation?.playlistName,
             aiDraft: latestGeneratedDraft ?? currentJournal?.aiDraft ?? trimmedDraft,
             finalText: trimmedDraft,
             createdAt: createdAt,
@@ -173,6 +180,7 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
             try await service.saveDailyJournal(journal)
             currentJournal = journal
             savedJournals = try await service.fetchDailyJournals(forUserId: userId)
+            musicSummary = makeMusicSummary(from: todayLogs, journal: journal)
             statusMessage = "Journal saved."
             errorMessage = nil
         } catch {
@@ -215,5 +223,24 @@ final class DailyJournalViewModel: NSObject, ObservableObject, AVSpeechSynthesiz
             counts[log.emotion, default: 0] += 1
         }
         return counts.max { $0.value < $1.value }?.key
+    }
+
+    private func dailyMusicRecommendation(from logs: [EmotionLog]) -> MusicMood? {
+        guard let emotion = dominantEmotion(from: logs) else { return nil }
+        return MusicMapper.recommendation(for: emotion)
+    }
+
+    private func makeMusicSummary(from logs: [EmotionLog], journal: DailyJournal?) -> String {
+        if let journal,
+           let genre = journal.recommendedGenre,
+           let playlistName = journal.playlistName {
+            return "Today's saved music mood: \(genre) via \(playlistName)."
+        }
+
+        guard let recommendation = dailyMusicRecommendation(from: logs) else {
+            return "No music recommendation has been linked to today's mood yet."
+        }
+
+        return "Today's music mood points to \(recommendation.genre) with playlist \(recommendation.playlistName)."
     }
 }

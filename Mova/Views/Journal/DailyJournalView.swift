@@ -27,11 +27,20 @@ struct DailyJournalView: View {
             List {
                 Section("Today's Mood") {
                     MovaGlassCard {
-                        HStack(spacing: 12) {
-                            MovaIconBadge(systemName: "waveform.path.ecg")
-                            Text(viewModel.moodSummary)
-                                .font(.subheadline)
-                                .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                        VStack(alignment: .leading, spacing: 14) {
+                            HStack(spacing: 12) {
+                                MovaIconBadge(systemName: "waveform.path.ecg")
+                                Text(viewModel.moodSummary)
+                                    .font(.subheadline)
+                                    .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                            }
+
+                            HStack(spacing: 12) {
+                                MovaIconBadge(systemName: "music.note.list")
+                                Text(viewModel.musicSummary)
+                                    .font(.subheadline)
+                                    .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                            }
                         }
                     }
                     .listRowBackground(Color.clear)
@@ -56,7 +65,7 @@ struct DailyJournalView: View {
                     .listRowBackground(Color.clear)
 
                     Button {
-                        Task { await viewModel.generateDraft(userId: currentUserId) }
+                        Task { await viewModel.generateDraft() }
                     } label: {
                         Label(
                             viewModel.isGenerating ? "Generating Draft..." : "Generate Draft",
@@ -159,6 +168,11 @@ struct DailyJournalView: View {
                                     Text(Self.dateFormatter.string(from: journal.date))
                                         .font(.caption.bold())
                                         .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                                    if let playlistName = journal.playlistName, let genre = journal.recommendedGenre {
+                                        Text("\(genre) • \(playlistName)")
+                                            .font(.caption)
+                                            .foregroundColor(MovaTimeMood.current.secondaryForeground)
+                                    }
                                     Text(journal.finalText)
                                         .font(.subheadline)
                                         .foregroundColor(MovaTimeMood.current.foreground)

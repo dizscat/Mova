@@ -177,6 +177,43 @@ struct MovaIconBadge: View {
     }
 }
 
+struct MovaWordmark: View {
+    var mood: MovaTimeMood = .current
+
+    var body: some View {
+        HStack(spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(mood.accentGradient)
+
+                VStack(spacing: 2) {
+                    Text("M")
+                        .font(.system(size: 28, weight: .black, design: .rounded))
+                        .foregroundColor(.white)
+
+                    Circle()
+                        .fill(Color.white.opacity(0.88))
+                        .frame(width: 7, height: 7)
+                }
+            }
+            .frame(width: 64, height: 64)
+            .shadow(color: Color(red: 0.20, green: 0.72, blue: 0.76).opacity(0.24), radius: 18, x: 0, y: 10)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Mova")
+                    .font(.system(size: 38, weight: .heavy, design: .rounded))
+                    .foregroundColor(mood.foreground)
+
+                Text("Face-aware mood companion")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundColor(mood.secondaryForeground)
+            }
+
+            Spacer(minLength: 0)
+        }
+    }
+}
+
 struct MovaPrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
